@@ -6,6 +6,7 @@ clienteWeb = new Paho.MQTT.Client('broker.hivemq.com', 8884, clientId);
 const PiscinaPagina = document.getElementById('piscina')
 const ColetorPagina = document.getElementById('coletor')
 const DiferencaPagina = document.getElementById('diferenca')
+const CirculacaoPagina = document.getElementById('circulacao')
 
 clienteWeb.onMessageArrived = function(message) {
     
@@ -19,7 +20,14 @@ clienteWeb.onMessageArrived = function(message) {
     ColetorPagina.innerHTML = "Coletor "+TempColetor + ' °C'
     DiferencaPagina.textContent = "Diferenca "+TempDiferenca + ' °C'
    
-
+    if(dados.circulacao ==1){
+        CirculacaoPagina.textContent= "Ligado"
+        
+    }
+        else
+        {
+            CirculacaoPagina.textContent= "Desligado"
+        }
      
 };
 
