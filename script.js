@@ -6,38 +6,44 @@ clienteWeb = new Paho.MQTT.Client('broker.hivemq.com', 8884, clientId);
 const PiscinaPagina = document.getElementById('piscina')
 const ColetorPagina = document.getElementById('coletor')
 const DiferencaPagina = document.getElementById('diferenca')
-const CirculacaoPagina = document.getElementById('circulacao')
 
-clienteWeb.onMessageArrived = function(message) {
-    
+
+clienteWeb.onMessageArrived = function (message) {
+
     const payload = message.payloadString;
     const dados = JSON.parse(payload)
-    const TempPiscina=Number(dados.temperatura_piscina).toFixed(2);
-    const TempColetor=Number(dados.temperatura_coletor).toFixed(2);
-    const TempDiferenca=Number(dados.temperatura_diferenca).toFixed(2);
+    const TempPiscina = Number(dados.temperatura_piscina).toFixed(2);
+    const TempColetor = Number(dados.temperatura_coletor).toFixed(2);
+    const TempDiferenca = Number(dados.temperatura_diferenca).toFixed(2);
 
-    PiscinaPagina.textContent = "Piscina "+TempPiscina + ' °C'
-    ColetorPagina.innerHTML = "Coletor "+TempColetor + ' °C'
-    DiferencaPagina.textContent = "Diferenca "+TempDiferenca + ' °C'
-   
-    if(dados.circulacao ==1){
-        CirculacaoPagina.textContent= "Ligado"
-        
-    }
-        else
-        {
-            CirculacaoPagina.textContent= "Desligado"
-        }
-     
+    PiscinaPagina.textContent = "Piscina " + TempPiscina + ' °C'
+    ColetorPagina.innerHTML = "Coletor " + TempColetor + ' °C'
+    DiferencaPagina.textContent = "Diferença " + TempDiferenca + ' °C'
+
+    if (dados.circulacao === 1) {
+  document.getElementById("bomba").src = "Bomba_ligada.png";
+} else {
+  document.getElementById("bomba").src = "Bomba_desligada.png";
+}
+const fluxoIda = document.getElementById("fluxoIda");
+const fluxoRetorno = document.getElementById("fluxoRetorno");
+
+if (dados.circulacao === 1) {
+  fluxoIda.style.opacity = 1;
+  fluxoRetorno.style.opacity = 1;
+} else {
+  fluxoIda.style.opacity = 0;
+  fluxoRetorno.style.opacity = 0;
+}
 };
 
-clienteWeb.connect({   
-    useSSL: true, 
-    onSuccess: function() {
+clienteWeb.connect({
+    useSSL: true,
+    onSuccess: function () {
         alert('A conexão com Broker foi bem sucedida')
         clienteWeb.subscribe('piscina/temperatura/enviar');
     },
-    onFailure: function() {
+    onFailure: function () {
         alert('A conexão com Broker falhou')
     }
 });

@@ -12,19 +12,16 @@
 <body>
   <div class="container">
     <h1>Aquecedor de Piscina</h1>
-
     <div class="imagens">
-      <div class="imagem-box">
-         <div class="coletor" id="coletor">Coletor: -- °C</div>
-        <img src="Imagem_piscina.png" alt="Piscina" />
-        <div class="piscina" id="piscina">Piscina: -- °C</div>
-        <div class="div-bomba">
-        <p class="circulacao" id="circulacao">Circulacao</p>
-          <img src="Bomba.png" alt="Bomba" class="bomba" >
-        
-        </div>
-        
-      </div>
+    <div class="imagem-box">
+    <div class="coletor" id="coletor">Coletor: -- °C</div>
+    <img src="Imagem_piscina.png" alt="Piscina" />
+    <div class="piscina" id="piscina">Piscina: -- °C</div>
+    <div class="div-bomba">
+    <img id="bomba" src="Bomba_desligada.png" alt="Bomba" class="bomba" />
+    
+  </div>
+</div>
 
       
     </div>
@@ -34,3 +31,11 @@
 </body>
 <script src="script.js"></script>
 </html>
+
+<!-- Tubulações -->
+<div class="tubo ida"></div>
+<div class="tubo retorno"></div>
+
+<!-- Fluxo de água (invisível por padrão) -->
+<div class="fluxo ida" id="fluxoIda"></div>
+<div class="fluxo retorno" id="fluxoRetorno"></div>
