@@ -12,6 +12,9 @@
 <body>
   <div class="container">
     <h1>Aquecedor de Piscina</h1>
+    <p id="statusConexao" class="status online">
+    Status: Conectado
+    </p>
     <div class="imagens">
     <div class="imagem-box">
     <div class="coletor" id="coletor">Coletor: -- °C</div>
@@ -28,14 +31,14 @@
 
     <p class="diferenca" id="diferenca">Diferencial de Temperatura: -- °C</p>
   </div>
-</body>
-<script src="script.js"></script>
-</html>
-
-<!-- Tubulações -->
+  <!-- Tubulações -->
 <div class="tubo ida"></div>
 <div class="tubo retorno"></div>
 
 <!-- Fluxo de água (invisível por padrão) -->
 <div class="fluxo ida" id="fluxoIda"></div>
 <div class="fluxo retorno" id="fluxoRetorno"></div>
+</body>
+<script src="script.js"></script>
+</html>
+

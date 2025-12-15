@@ -127,6 +127,19 @@ left: 15%;
   top: 275px;
 }
 
+.status {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.status.online {
+  color: #2ecc71; /* verde */
+}
+
+.status.offline {
+  color: #f71b03; /* vermelho */
+}
+
 /* Animação de fluxo */
 @keyframes fluxoAgua {
   0% {
